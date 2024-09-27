@@ -1,0 +1,375 @@
+@charset "UTF-8";
+
+/* 기본 스타일 설정 */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	font-family: 'Arial', sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+/* 메인 콘텐츠 영역 4:6 레이아웃 */
+.main-content {
+	display: flex;
+	flex-grow: 1;
+	height: calc(100% - 60px); /* 타이틀 섹션 높이를 뺀 나머지 */
+	margin-left: 200px;
+	padding-right: 200px;
+	overflow: hidden; /* 전체 페이지에서 스크롤 제거 */
+}
+
+/* ==============왼쪽 4 비율 섹션============ */
+.left-section {
+	flex-basis: 40%;
+	background-color: white;
+	padding: 20px;
+}
+
+/* 달력 컨테이너를 부모 영역 크기에 맞게 조정 */
+.calendar-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 90%;
+	padding-bottom: 20px;
+}
+
+/* 캘린더 하단에 작성하기 버튼 */
+.calendar-write-btn {
+	position: relative;
+	padding: 8px 16px;
+	font-size: 14px;
+	background-color: #A0DAD0;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.calendar-write-btn:hover {
+	background-color: #76C7C0;
+}
+
+/* =========오른쪽 6 비율 섹션 (스크롤 가능)======== */
+/* 오른쪽 섹션 스크롤 가능하게 설정 */
+.right-section {
+	flex-basis: 60%;
+	background-color: #fff;
+	padding: 20px;
+	overflow-y: auto; /* 오른쪽 섹션만 스크롤 가능 */
+	max-height: 100vh; /* 브라우저 전체 높이에 맞추어 고정 */
+	position: relative; /* 스크롤 가능한 영역 */
+}
+
+/* 오른쪽 섹션의 높이를 전체 뷰포트에 맞추고 스크롤 바 위치 설정 */
+.right-section::-webkit-scrollbar {
+	width: 10px; /* 스크롤바의 너비 */
+}
+
+.right-section::-webkit-scrollbar-track {
+	background: #ffffff; /* 스크롤바 배경색 */
+}
+
+.right-section::-webkit-scrollbar-thumb {
+	background: #ffffff; /* 스크롤바 색상 */
+}
+
+/*===================== 날짜 섹션====================== */
+.date-section {
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 15px; /* 둥근 테두리 추가 */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
+}
+
+.date-section:hover {
+	border: 1px solid black; /* 마우스 호버 시 보더 색상과 두께 변경 */
+	background-color: white; /* 배경색도 변경 가능 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 마우스 호버 시 약간의 그림자 추가 */
+	transition: border 0.1s, background-color 0.1s, box-shadow 0.1s;
+	/* 부드럽게 변화하도록 전환 */
+}
+
+.date-section h2 {
+	margin: 0;
+	font-size: 12px;
+}
+
+/* =================To-do 리스트 섹션=================== */
+.todo-section {
+	position: relative; /* 부모 요소를 기준으로 자식 요소의 위치 설정 */
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 15px; /* 둥근 테두리 추가 */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
+}
+
+.todo-section:hover {
+	border: 1px solid black; /* 마우스 호버 시 보더 색상과 두께 변경 */
+	background-color: white; /* 배경색도 변경 가능 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 마우스 호버 시 약간의 그림자 추가 */
+	transition: border 0.1s, background-color 0.1s, box-shadow 0.1s;
+	/* 부드럽게 변화하도록 전환 */
+}
+
+/* To-do 리스트의 버튼 */
+.todo-section .todo-write-btn {
+	position: absolute; /* 부모 요소 안에서 절대 위치 */
+	top: 10px; /* 상단에서 10px 아래 */
+	right: 10px; /* 오른쪽에서 10px 떨어짐 */
+	padding: 8px 16px;
+	font-size: 14px;
+	background-color: #A0DAD0;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.todo-section .todo-write-btn:hover {
+	background-color: #76C7C0;
+}
+
+.todo-section h3 {
+	margin: 0 0 10px 0;
+	font-size: 20px;
+}
+
+.todo-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.todo-item img {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.todo-item span {
+	font-size: 18px;
+}
+
+/* ====이미지 업로드 및 일기 섹션을 가로로 나누는 부모 컨테이너=== */
+.upload-diary-container {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	height: 400px; /* 전체 높이를 늘림 */
+}
+
+/* =======================이미지 업로드 섹션======================= */
+.image-upload-section {
+	position: relative; /* 부모 요소를 기준으로 자식 요소의 위치 설정 */
+	flex-basis: 48%;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 15px; /* 둥근 테두리 추가 */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
+	max-height: 400px; /* 최대 높이 설정 */
+	overflow-y: auto; /* 텍스트가 넘칠 경우 스크롤 생성 */
+}
+
+.image-upload-section:hover {
+	border: 1px solid black; /* 마우스 호버 시 보더 색상과 두께 변경 */
+	background-color: white; /* 배경색도 변경 가능 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 마우스 호버 시 약간의 그림자 추가 */
+	transition: border 0.1s, background-color 0.1s, box-shadow 0.1s;
+	/* 부드럽게 변화하도록 전환 */
+}
+
+/* 스크롤바 스타일 설정 (선택사항) */
+.image-upload-section::-webkit-scrollbar {
+	width: 1px; /* 스크롤바 너비 */
+	margin-left: 5px;
+}
+
+.image-upload-section::-webkit-scrollbar-track {
+	background: transparent; /* 스크롤바 트랙 배경색 */
+}
+
+.image-upload-section::-webkit-scrollbar-thumb {
+	background-color: transparent; /* 스크롤바 색상 */
+	border-radius: 10px; /* 스크롤바 모서리 둥글게 */
+}
+
+/* 이미지 텍스트 컨테이너 (긴 텍스트 처리) */
+.image-upload-section-con {
+  max-width: 100%; /* 이미지를 컨테이너 너비에 맞게 조정 */
+  max-height: 300px; /* 이미지 섹션의 최대 높이를 설정하여 스크롤이 가능하도록 함 */
+  object-fit: contain; /* 이미지를 컨테이너 안에 비율을 유지하며 맞춤 */
+  overflow-y: auto; /* 세로로 넘칠 경우 스크롤 추가 */
+  display: block; /* 이미지를 블록 요소로 설정 */
+}
+
+/* =========================일기 작성 섹션======================== */
+.diary-section {
+	position: relative; /* 부모 요소를 기준으로 자식 요소의 위치 설정 */
+	flex-basis: 48%;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 15px; /* 둥근 테두리 추가 */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
+	max-height: 400px; /* 최대 높이 설정 */
+	overflow-y: auto; /* 텍스트가 넘칠 경우 스크롤 생성 */
+}
+
+.diary-section:hover {
+	border: 1px solid black; /* 마우스 호버 시 보더 색상과 두께 변경 */
+	background-color: white; /* 배경색도 변경 가능 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 마우스 호버 시 약간의 그림자 추가 */
+	transition: border 0.1s, background-color 0.1s, box-shadow 0.1s;
+	/* 부드럽게 변화하도록 전환 */
+}
+
+/* 스크롤바 스타일 설정 (선택사항) */
+.diary-section::-webkit-scrollbar {
+	width: 1px; /* 스크롤바 너비 */
+	margin-left: 5px;
+}
+
+.diary-section::-webkit-scrollbar-track {
+	background: transparent; /* 스크롤바 트랙 배경색 */
+}
+
+.diary-section::-webkit-scrollbar-thumb {
+	background-color: transparent; /* 스크롤바 색상 */
+	border-radius: 10px; /* 스크롤바 모서리 둥글게 */
+}
+
+.diary-write-btn {
+   float: right; /* 버튼을 오른쪽으로 정렬 */
+   top: 10px; /* 상단에서 10px 아래 */
+   right: 10px; /* 오른쪽에서 10px 떨어짐 */
+   padding: 8px 16px;
+   font-size: 14px;
+   background-color: #A0DAD0;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   margin-top: 10px;
+}
+
+
+.diary-write-btn:hover {
+	background-color: #76C7C0;
+}
+
+/* 작성하기 버튼 */
+.button-container {
+	margin-top: 10px;
+	text-align: right;
+}
+
+/* 다크 모드 전체 배경 */
+body.dark-mode {
+    background-color: #1e1e1e; /* 부드러운 검은색 배경 */
+    color: #e0e0e0; /* 밝은 회색 텍스트 */
+}
+
+/* 다크 모드 왼쪽 섹션 */
+body.dark-mode .left-section {
+    background-color: #1e1e1e; /* 서브 배경색 */
+    color: #e0e0e0;
+}
+
+/* 다크 모드 오른쪽 섹션 */
+body.dark-mode .right-section {
+    background-color: #1e1e1e; /* 서브 배경색 */
+    color: #e0e0e0;
+}
+
+/* 다크 모드 날짜 섹션 */
+body.dark-mode .date-section {
+    background-color: #333;
+    border: 1px solid #333;
+    color: #e0e0e0;
+}
+
+/* 다크 모드 To-do 섹션 */
+body.dark-mode .todo-section {
+    background-color: #333;
+    border: 1px solid #333;
+    color: #e0e0e0;
+}
+
+/* 다크 모드 이미지 업로드 섹션 */
+body.dark-mode .image-upload-section {
+    background-color: #333;
+    border: 1px solid #333;
+    color: #e0e0e0;
+}
+
+/* 다크 모드 일기 섹션 */
+body.dark-mode .diary-section {
+    background-color: #333;
+    border: 1px solid #333;
+    color: #e0e0e0;
+}
+
+/* 다크 모드 버튼 */
+body.dark-mode .calendar-write-btn,
+body.dark-mode .todo-section .todo-write-btn,
+body.dark-mode .diary-write-btn {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #ddd;
+}
+
+body.dark-mode .calendar-write-btn:hover,
+body.dark-mode .todo-section .todo-write-btn:hover,
+body.dark-mode .diary-write-btn:hover {
+    background-color: black;
+}
+
+/* 다크 모드에서 스크롤바 스타일 */
+body.dark-mode .right-section::-webkit-scrollbar-thumb,
+body.dark-mode .image-upload-section::-webkit-scrollbar-thumb,
+body.dark-mode .diary-section::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+body.dark-mode .right-section::-webkit-scrollbar-track,
+body.dark-mode .image-upload-section::-webkit-scrollbar-track,
+body.dark-mode .diary-section::-webkit-scrollbar-track {
+    background-color: #1e1e1e;
+}
+
+
+
+
+
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media ( max-width : 768px) {
+	.left-section, .right-section {
+		flex-basis: 100%;
+		padding: 10px;
+	}
+	.upload-diary-container {
+		flex-direction: column;
+	}
+	.image-upload-section, .diary-section {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+}

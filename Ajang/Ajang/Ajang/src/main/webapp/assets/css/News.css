@@ -1,0 +1,150 @@
+/* 타이틀 메뉴 아래 body 전체에 마진을 추가 */
+body {
+    margin-top: 150px; /* 타이틀의 높이만큼 마진 추가 */
+}
+
+/* 전체 컨테이너 스타일 */
+.News-container {
+    max-width: 1200px; /* 최대 너비를 설정하여 가운데 정렬 */
+    margin: 0 auto; /* 위아래는 0, 좌우는 자동으로 여백 설정 */
+    padding: 20px; /* 안쪽 여백 추가 */
+    box-sizing: border-box;
+    max-height: 80vh; /* 화면 높이의 80%로 제한 */
+    height: calc(100% - 60px); /* 타이틀 섹션 높이를 뺀 나머지 */
+}
+
+/* 탑 바 (가운데 정렬) */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1100px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 20px; /* 안쪽 여백 */
+    box-sizing: border-box;
+}
+
+/* 육아도감 제목을 왼쪽으로 배치 */
+.top-bar h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 0; /* 왼쪽으로 정렬 */
+}
+
+/* 검색창을 우측으로 배치 */
+.search-container {
+    text-align: right;
+}
+
+.search-input {
+    padding: 10px;
+    width: 200px; /* 입력란 너비 */
+    font-size: 16px;
+}
+
+/* 검색 버튼 스타일 */
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #fff;
+    color: black;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #555;
+}
+
+/* 경계선을 가운데에만 남기고 양 옆 제거 */
+.section-divider-a {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    position: relative;
+    max-width: 1100px; /* 경계선이 가운데로 정렬되도록 설정 */
+    margin: 0 auto;
+}
+
+/* 아이템 리스트를 가운데 정렬 */
+.item-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto; /* 자동으로 가운데 정렬되도록 설정 */
+}
+
+.item {
+    align-items: flex-start; /* 아이템의 상단을 기준으로 정렬 */
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    width: 1000px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid #ddd;
+    position: relative; /* 버튼 위치를 조정하기 위해 relative 설정 */
+}
+
+.item:hover {
+    border: 1px solid black; /* 마우스 호버 시 보더 색상과 두께 변경 */
+    background-color: white; /* 배경색도 변경 가능 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 마우스 호버 시 약간의 그림자 추가 */
+    transition: border 0.1s, background-color 0.1s, box-shadow 0.1s; /* 부드럽게 변화하도록 전환 */
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+/* "영상 시청" 버튼 스타일 */
+.news-watch-button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute; /* 절대 위치 설정 */
+    right: 20px; /* 오른쪽에 20px 간격 */
+    top: 50%; /* 상단에서 50% 위치 */
+    transform: translateY(-50%); /* 정확한 가운데 정렬 */
+    border: 1px solid black;
+}
+
+.news-watch-button:hover {
+    background-color: #dddddd;
+}
+
+body.dark-mode {
+    background-color: #1e1e1e; /* 부드러운 검은색 배경 */
+    color: #e0e0e0; /* 밝은 회색 텍스트 */
+}
+/* 다크 모드에서 아이템 리스트 배경과 텍스트 */
+body.dark-mode .item {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #333;
+}
+
+/* 다크 모드에서 영상 시청 버튼 */
+body.dark-mode .news-watch-button {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+body.dark-mode .news-watch-button:hover {
+    background-color: #444;
+}
+
+/* 다크 모드에서 아이템 설명 텍스트 */
+body.dark-mode .item-info {
+    color: #e0e0e0;
+}
